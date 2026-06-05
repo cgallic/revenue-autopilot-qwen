@@ -12,6 +12,11 @@ Turn product ideas into paid-ready offers, then launch approved distribution wit
 
 Track 4: Autopilot Agent
 
+## Links
+
+- Repository: https://github.com/cgallic/revenue-autopilot-qwen
+- Public demo: https://snappedai.com/revenue-autopilot-qwen/
+
 ## Inspiration
 
 Founders do not need more AI demos. They need systems that find a buyer pain, prove whether someone would pay, fix the commercial path, and safely launch distribution.
