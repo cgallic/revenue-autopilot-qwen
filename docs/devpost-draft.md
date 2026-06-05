@@ -16,6 +16,10 @@ Track 4: Autopilot Agent
 
 - Repository: https://github.com/cgallic/revenue-autopilot-qwen
 - Public demo: https://snappedai.com/revenue-autopilot-qwen/
+- Architecture diagram: https://snappedai.com/revenue-autopilot-qwen/docs/architecture.svg
+- Demo video asset: https://snappedai.com/revenue-autopilot-qwen/docs/revenue-autopilot-demo.mp4
+
+Note: Devpost rules require a YouTube, Vimeo, or Youku video URL. The MP4 above is a public fallback asset until a platform upload is completed.
 
 ## Inspiration
 

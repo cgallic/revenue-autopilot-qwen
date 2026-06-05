@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-labelledby="title desc">
+  <title id="title">Revenue Autopilot Architecture</title>
+  <desc id="desc">Architecture diagram for a Qwen Cloud autopilot agent that turns product context into approved revenue actions with logging and payment safety gates.</desc>
+  <rect width="1400" height="820" fill="#f7f8f5"/>
+  <text x="70" y="78" font-family="Inter,Arial,sans-serif" font-size="44" font-weight="800" fill="#17201b">Revenue Autopilot Architecture</text>
+  <text x="72" y="115" font-family="Inter,Arial,sans-serif" font-size="18" fill="#5b665f">Track 4 Autopilot Agent: Qwen review layer + commercial gates + human approval + audited execution</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2357a3"/>
+    </marker>
+    <style>
+      .box{fill:#fff;stroke:#d9e2dc;stroke-width:2;rx:10}
+      .title{font-family:Inter,Arial,sans-serif;font-size:22px;font-weight:800;fill:#17201b}
+      .body{font-family:Inter,Arial,sans-serif;font-size:16px;fill:#5b665f}
+      .small{font-family:Inter,Arial,sans-serif;font-size:14px;fill:#5b665f}
+      .arrow{stroke:#2357a3;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .gate{fill:#fff8ed;stroke:#e1bd7b;stroke-width:2;rx:10}
+      .safe{fill:#f0faf4;stroke:#8fc8ad;stroke-width:2;rx:10}
+      .block{fill:#fff4f5;stroke:#db8d98;stroke-width:2;rx:10}
+    </style>
+  </defs>
+
+  <rect class="box" x="70" y="170" width="260" height="150"/>
+  <text class="title" x="94" y="210">Workspace Inputs</text>
+  <text class="body" x="94" y="244">Product docs</text>
+  <text class="body" x="94" y="272">Buyer pain signals</text>
+  <text class="body" x="94" y="300">Prior proof/outreach logs</text>
+
+  <rect class="box" x="410" y="170" width="260" height="150"/>
+  <text class="title" x="434" y="210">Opportunity Ranker</text>
+  <text class="body" x="434" y="244">Finds monetizable wedge</text>
+  <text class="body" x="434" y="272">Scores urgency + ICP</text>
+  <text class="body" x="434" y="300">Selects next product run</text>
+
+  <rect class="box" x="750" y="170" width="260" height="150"/>
+  <text class="title" x="774" y="210">Qwen Review Layer</text>
+  <text class="body" x="774" y="244">Commercial critique</text>
+  <text class="body" x="774" y="272">JSON verdicts</text>
+  <text class="body" x="774" y="300">Tool-use plan</text>
+
+  <rect class="box" x="1090" y="170" width="240" height="150"/>
+  <text class="title" x="1114" y="210">Asset Worker</text>
+  <text class="body" x="1114" y="244">Patches page/copy</text>
+  <text class="body" x="1114" y="272">Builds templates</text>
+  <text class="body" x="1114" y="300">Creates proof assets</text>
+
+  <path class="arrow" d="M330 245 H398"/>
+  <path class="arrow" d="M670 245 H738"/>
+  <path class="arrow" d="M1010 245 H1078"/>
+
+  <rect class="gate" x="210" y="410" width="300" height="170"/>
+  <text class="title" x="236" y="450">Commercial Gates</text>
+  <text class="body" x="236" y="486">CTA + pricing + intake</text>
+  <text class="body" x="236" y="516">Proof + fulfillment</text>
+  <text class="body" x="236" y="546">No weak/free-value leak</text>
+
+  <rect class="safe" x="550" y="410" width="300" height="170"/>
+  <text class="title" x="576" y="450">Human Approval Router</text>
+  <text class="body" x="576" y="486">Approves exact scope</text>
+  <text class="body" x="576" y="516">Blocks account/payment ops</text>
+  <text class="body" x="576" y="546">Stores approval record</text>
+
+  <rect class="box" x="890" y="410" width="300" height="170"/>
+  <text class="title" x="916" y="450">Outreach Executor</text>
+  <text class="body" x="916" y="486">Replies/posts/emails only</text>
+  <text class="body" x="916" y="516">when scope is approved</text>
+  <text class="body" x="916" y="546">Logs URL/message ID</text>
+
+  <path class="arrow" d="M540 320 C540 365 360 365 360 398"/>
+  <path class="arrow" d="M880 320 C880 365 700 365 700 398"/>
+  <path class="arrow" d="M850 495 H878"/>
+
+  <rect class="box" x="210" y="660" width="300" height="110"/>
+  <text class="title" x="236" y="700">Append-Only Ledger</text>
+  <text class="body" x="236" y="736">Approvals, actions, blockers</text>
+
+  <rect class="block" x="550" y="660" width="300" height="110"/>
+  <text class="title" x="576" y="700">Payment Safety Gate</text>
+  <text class="body" x="576" y="736">No payment request until approved</text>
+
+  <rect class="box" x="890" y="660" width="300" height="110"/>
+  <text class="title" x="916" y="700">Revenue Output</text>
+  <text class="body" x="916" y="736">Paid-ready offer + logged leads</text>
+
+  <path class="arrow" d="M1040 580 V650"/>
+  <path class="arrow" d="M890 715 H862"/>
+  <path class="arrow" d="M550 715 H522"/>
+  <path class="arrow" d="M700 580 V648"/>
+
+  <text class="small" x="70" y="800">Current public demo uses mock Qwen mode until Qwen Cloud credentials and Alibaba Cloud deployment are approved and available.</text>
+</svg>

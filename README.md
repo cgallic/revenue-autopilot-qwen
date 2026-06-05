@@ -37,6 +37,12 @@ Screenshot artifact:
 
 - `docs/screenshots/revenue-autopilot-demo.png`
 
+Public demo links:
+
+- Demo page: https://snappedai.com/revenue-autopilot-qwen/
+- Architecture diagram: https://snappedai.com/revenue-autopilot-qwen/docs/architecture.svg
+- Demo video asset: https://snappedai.com/revenue-autopilot-qwen/docs/revenue-autopilot-demo.mp4
+
 ## Qwen Cloud Hook
 
 `src/qwen.js` is a provider boundary. It runs in mock mode by default. For Qwen Cloud:
@@ -67,7 +73,9 @@ The agent refuses to do these without explicit human approval:
 ## Hackathon Assets
 
 - `docs/architecture.md`
+- `docs/architecture.svg`
 - `docs/alibaba-deployment-proof.md`
 - `docs/devpost-draft.md`
+- `docs/revenue-autopilot-demo.mp4`
 - `docs/screenshots/revenue-autopilot-demo.png`
 - `examples/sendproof-run.json`
