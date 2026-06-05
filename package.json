@@ -1,0 +1,15 @@
+{
+  "name": "revenue-autopilot-qwen",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "demo": "node src/workflow.js examples/sendproof-run.json",
+    "check": "node src/workflow.js examples/sendproof-run.json --check",
+    "serve": "python3 -m http.server 4173 -d public"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT"
+}

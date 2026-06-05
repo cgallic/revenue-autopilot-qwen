@@ -1,0 +1,18 @@
+flowchart LR
+  U[Founder input] --> Q[Qwen Cloud Agent Orchestrator]
+  Q --> S[Workflow State Store]
+  Q --> T[Tool Adapters]
+  T --> P[Proof and Verification Results]
+  P --> A[Artifact Generator]
+  S --> A
+  A --> H[Human Review Console]
+  H --> G{Approval Gate}
+  G -->|approved| X[External Action Adapter]
+  G -->|not approved| B[Blocked or Draft State]
+  X --> L[Action Logger]
+  B --> L
+  L --> S
+  Q -. policy checks .-> G
+  D[Alibaba Cloud Deployment] --> Q
+  D --> UI[Public Demo UI]
+  UI --> U

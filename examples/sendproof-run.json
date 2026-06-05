@@ -1,0 +1,42 @@
+{
+  "project": "SendProof Revenue Run",
+  "product": {
+    "name": "SendProof",
+    "url": "https://snappedai.com/products/sendproof/",
+    "primaryCta": "Request same-day audit",
+    "canonicalPricing": "$99 Express Audit / $250 Batch Audit",
+    "intakePath": "prefilled email to snappedai@agentmail.to",
+    "fulfillmentRunbook": "Paid audit template plus order log",
+    "paymentApprovalGate": "Ask Connor before requesting payment or choosing a rail",
+    "proofArtifact": "20 verified Reddit public replies logged in money-work/REVENUE-ACTION-2026-06-05.md",
+    "freeOutputRemovesPaidReason": false,
+    "pricingMismatch": false
+  },
+  "proof": {
+    "functionalTest": "PASS",
+    "commercialReview": "PASS_LAUNCH_READY",
+    "sampleScore": "42/100",
+    "outreachCompleted": 20,
+    "paymentRequests": 0,
+    "unsafeActions": 0
+  },
+  "humanApproval": {
+    "source": "WhatsApp",
+    "approver": "Connor",
+    "message": "Go",
+    "scope": "20 targeted SendProof DMs/replies; excludes payment requests, rail selection, purchases, wallet/account/DNS changes"
+  },
+  "proposedActions": [
+    {
+      "type": "reply",
+      "humanApprovalId": "whatsapp-go-2026-06-05-1603",
+      "sourceUrl": "https://old.reddit.com/r/coldemail/comments/1s9lzmw/whats_your_ideal_cold_email_infrastructure_setup/",
+      "actionUrl": "https://old.reddit.com/r/coldemail/comments/1s9lzmw/whats_your_ideal_cold_email_infrastructure_setup/opxec1v/"
+    },
+    {
+      "type": "payment_request",
+      "sourceUrl": "future_buyer_reply",
+      "note": "Blocked until Connor approves buyer-specific payment rail/request"
+    }
+  ]
+}

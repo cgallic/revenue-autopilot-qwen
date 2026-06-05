@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Revenue Autopilot Demo</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #17201b;
+        --muted: #5b665f;
+        --line: #d9e2dc;
+        --bg: #f7f8f5;
+        --panel: #ffffff;
+        --green: #127a50;
+        --amber: #9b5c00;
+        --red: #b52b3a;
+        --blue: #2357a3;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+      }
+
+      main {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 36px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .brand {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .eyebrow {
+        color: var(--blue);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(30px, 4vw, 56px);
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .tagline {
+        max-width: 760px;
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+      .status-pill {
+        flex: 0 0 auto;
+        border: 1px solid #add6c2;
+        color: var(--green);
+        background: #edf8f2;
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 18px;
+        margin-top: 24px;
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .panel h2 {
+        margin: 0 0 12px;
+        font-size: 18px;
+        letter-spacing: 0;
+      }
+
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .step {
+        min-height: 138px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfcfa;
+      }
+
+      .step strong {
+        display: block;
+        font-size: 15px;
+        margin-bottom: 8px;
+      }
+
+      .step span {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.35;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .metric {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfcfa;
+      }
+
+      .metric b {
+        display: block;
+        font-size: 26px;
+        line-height: 1.1;
+      }
+
+      .metric span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .ledger {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .event {
+        border-left: 4px solid var(--blue);
+        background: #f8fbff;
+        padding: 10px 12px;
+      }
+
+      .event.pass {
+        border-left-color: var(--green);
+        background: #f4fbf7;
+      }
+
+      .event.block {
+        border-left-color: var(--red);
+        background: #fff6f7;
+      }
+
+      .event.warn {
+        border-left-color: var(--amber);
+        background: #fffaf1;
+      }
+
+      .event strong {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+
+      .event span {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .offer {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .price {
+        font-size: 34px;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      ul {
+        margin: 10px 0 0;
+        padding-left: 20px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 8px;
+        border: 1px solid #184e36;
+        background: #184e36;
+        color: white;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .button.secondary {
+        background: white;
+        color: #184e36;
+      }
+
+      code {
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: 13px;
+      }
+
+      @media (max-width: 880px) {
+        main {
+          width: min(100% - 20px, 720px);
+          padding-top: 18px;
+        }
+
+        .topbar,
+        .grid,
+        .offer {
+          grid-template-columns: 1fr;
+          display: grid;
+        }
+
+        .topbar {
+          justify-items: start;
+        }
+
+        .flow,
+        .metrics {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .flow,
+        .metrics {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="topbar">
+        <div class="brand">
+          <div class="eyebrow">Qwen Cloud Hackathon · Track 4 Autopilot Agent</div>
+          <h1>Revenue Autopilot</h1>
+          <p class="tagline">A business workflow agent that turns a product into a paid-ready offer, runs adversarial launch checks, executes only approved distribution, and blocks payment requests until the owner approves.</p>
+        </div>
+        <div class="status-pill">Local demo: PASS with payment gate</div>
+      </section>
+
+      <section class="grid">
+        <div class="panel">
+          <h2>Autopilot Workflow</h2>
+          <div class="flow">
+            <div class="step">
+              <strong>1. Find Wedge</strong>
+              <span>Uses product context and buyer pain to select a narrow offer worth selling today.</span>
+            </div>
+            <div class="step">
+              <strong>2. Fail Weak Offers</strong>
+              <span>Commercial gates require pricing, CTA, intake, proof, fulfillment, and no pricing drift.</span>
+            </div>
+            <div class="step">
+              <strong>3. Launch With Approval</strong>
+              <span>External actions require a human approval scope before posting, replying, or emailing.</span>
+            </div>
+            <div class="step">
+              <strong>4. Route Revenue</strong>
+              <span>Buyer interest becomes a payment approval checkpoint, not an unauthorized money request.</span>
+            </div>
+          </div>
+
+          <div class="metrics">
+            <div class="metric">
+              <b>20</b>
+              <span>verified Reddit replies in proof run</span>
+            </div>
+            <div class="metric">
+              <b>$99</b>
+              <span>SendProof express audit offer</span>
+            </div>
+            <div class="metric">
+              <b>$1.5k</b>
+              <span>Revenue Autopilot launch sprint</span>
+            </div>
+            <div class="metric">
+              <b>0</b>
+              <span>unauthorized payment requests</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Run Ledger</h2>
+          <div class="ledger">
+            <div class="event pass">
+              <strong>Commercial Readiness: PASS</strong>
+              <span>SendProof has aligned pricing, paid CTA, intake path, proof, and fulfillment terms.</span>
+            </div>
+            <div class="event warn">
+              <strong>Qwen Boundary: Mock Mode</strong>
+              <span>Provider boundary is ready. Live Qwen Cloud proof waits for account/API approval.</span>
+            </div>
+            <div class="event pass">
+              <strong>External Action: Approved</strong>
+              <span>Connor approved the 20-reply SendProof distribution batch with explicit exclusions.</span>
+            </div>
+            <div class="event block">
+              <strong>Payment Request: Blocked</strong>
+              <span>The agent refuses payment request/rail selection until buyer-specific approval.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="offer">
+        <div class="panel">
+          <h2>Submission Story</h2>
+          <p class="tagline">This is not a toy agent. It is built from a real revenue run: SendProof failed its buyer-incentive test, got fixed, passed adversarial review, then launched through logged public replies after approval.</p>
+          <div class="cta-row">
+            <a class="button" href="../docs/devpost-draft.md">Devpost Draft</a>
+            <a class="button secondary" href="../docs/architecture.md">Architecture</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Money Path</h2>
+          <div class="price">$1,500 Launch Sprint</div>
+          <ul>
+            <li>paid offer and proof page</li>
+            <li>ICP, pricing, target list, outreach scripts</li>
+            <li>intake path, conversion log, fulfillment runbook</li>
+            <li>human approval gates for outbound and payment</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
